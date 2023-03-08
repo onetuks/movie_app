@@ -1,30 +1,21 @@
 import React from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from './routes/Home';
+import About from './routes/About';
+import Detail from './routes/Detail';
+import Navigation from './components/Navigation';
 
-class App extends React.Component {
-  state = {
-    isLoading: true,
-    movies: []
-  }
-
-  /*
-    componentDidMount()
-
-    - life cycle : Mounting < Component
-    - operation : fetching data
-  */
-  componentDidMount() {
-    setTimeout(() => {
-      // state를 추가하는 것도 자유임.
-      this.setState({ isLoading: false, book: true });
-    }, 6000);
-  }
-
-  render() {
-    const { isLoading } = this.state;
-    return (
-      <div>{isLoading ? "Loading" : "We are ready"}</div>
-    );
-  }
+function App() {
+  return (
+    <HashRouter>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/movie-detail" element={<Detail/>}/>
+      </Routes>
+    </HashRouter>
+  );
 }
 
 export default App;
