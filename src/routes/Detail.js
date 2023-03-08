@@ -1,13 +1,23 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Detail() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    let title = "";
     
-    const props = useLocation().state;
-    console.log(props);
+    useEffect(() => {
+        console.log(location);
+
+        if (location.state === null || location.state === undefined) {
+            navigate("/");
+        } else {
+            title = location.state.title;
+        }
+    }, []);
     
     return(
-        <h1>hello</h1>
+        <h1>{title}</h1>
     );
 }
 

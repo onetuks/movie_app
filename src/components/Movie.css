@@ -26,8 +26,12 @@ body,
   width: 80%;
 }
 
-.link {
-  display: contents;
+.movies .movie a {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
 }
 
 .movies .movie {
